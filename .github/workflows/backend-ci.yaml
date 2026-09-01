@@ -5,11 +5,13 @@ on:
     branches:
       - main
     paths:
-      - 'starter/backend/**'
+      - "starter/backend/**"
+      - ".github/workflows/backend-ci.yaml"
   workflow_dispatch:
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +21,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install Pipenv
         run: pip install pipenv
@@ -33,6 +35,7 @@ jobs:
         run: pipenv run lint
 
   test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -42,7 +45,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install Pipenv
         run: pip install pipenv
@@ -56,10 +59,11 @@ jobs:
         run: pipenv run test
 
   build:
-    runs-on: ubuntu-latest
+    name: Build
     needs:
       - lint
       - test
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
