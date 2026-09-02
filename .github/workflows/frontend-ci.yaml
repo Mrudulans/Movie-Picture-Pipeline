@@ -80,7 +80,7 @@ jobs:
 
       - name: Run tests
         working-directory: starter/frontend
-       run: CI=true npm test
+        run: CI=true npm test
 
       - name: Build Docker image
         working-directory: starter/frontend
