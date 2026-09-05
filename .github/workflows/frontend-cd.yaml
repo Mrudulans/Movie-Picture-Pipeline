@@ -60,7 +60,7 @@ jobs:
 
       - name: Run tests
         working-directory: starter/frontend
-        run: CI=true npm test
+        run: npm run test
 
   build:
     name: Build
@@ -86,7 +86,7 @@ jobs:
 
       - name: Run tests
         working-directory: starter/frontend
-        run: CI=true npm test
+        run: npm run test
 
       - name: Build Docker image
         working-directory: starter/frontend
